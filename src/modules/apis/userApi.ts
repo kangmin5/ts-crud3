@@ -18,7 +18,7 @@ export const fetchUsers = async () => {
 
 export const addUserApi = async (
     payload: {
-        id:number,name:string, mobile:string, email: string,}
+        id:string,name:string, mobile:string, email: string,}
 ) => {
         try{
             // console.log(typeof ( payload ))

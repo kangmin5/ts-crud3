@@ -1,10 +1,14 @@
 import React, { FC, SetStateAction, useState } from 'react'
 import { User, userActions } from 'modules';
 import { useDispatch } from 'react-redux';
+import nextId, { setPrefix } from "react-id-generator";
 
-export const AddUser: FC<{addUserHandler:any}> = ({addUserHandler}) => {
+export const AddUser: FC<{ addUserHandler: any }> = ({ addUserHandler }) => {
+  let idx = nextId();
+  setPrefix("a-")
+
   const dispatch = useDispatch();
-  const [input, setInput] = useState<User>({id:3 ,name:"", phone:"", email:"" })
+  const [input, setInput] = useState<User>({id:idx, name:"", phone:"", email:"" })
   
   const onChange = (e: { preventDefault: () => void; target: { name: string; value: string } }) =>{
       e.preventDefault()
@@ -19,11 +23,12 @@ export const AddUser: FC<{addUserHandler:any}> = ({addUserHandler}) => {
       alert('모든필드가 채워져야함')
       return;
     }
+
     addUserHandler(input)
     dispatch(userActions.addUserRequest(input))
-    setInput({id:0 ,name:"",phone:"",email:""})
-
+    setInput({id:idx+1 ,name:"",phone:"",email:""})
   }
+
   return (
     <div>
           <h3>사용자추가</h3> 

@@ -4,13 +4,14 @@ import { fetchUsers, User } from 'modules'
 import { NextPage } from 'next'
 import React, { useEffect, useState } from 'react'
 import styles from 'styles/user.module.css'
+import AddUserPage from './addUser'
 
 const UserPage: NextPage = () => {
   const [users, setUsers] = useState<Array<User>>([])
 
   const addUserHandler = (user:any) => {
     console.log('>>>>>user:', user)
-    setUsers([...users,user])
+    setUsers([user,...users])
   }
   useEffect(() => {
       fetchUsers()
@@ -23,7 +24,7 @@ const UserPage: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <AddUser addUserHandler={addUserHandler } />
+      <AddUserPage addUserHandler={addUserHandler } />
       <UserList users={users} />
     </div>
   )
