@@ -1,0 +1,19 @@
+.container{
+    border:1px solid black;
+
+}
+.all{
+    width: 90vw;
+    min-height: 300px;
+    display: flex;
+    flex-direction: row;
+    border:1px solid red;
+}
+.left{
+    width: 30%;
+    border: 1px solid pink;
+}
+.right{
+    width:70%;
+    border: 1px solid blue;
+}
